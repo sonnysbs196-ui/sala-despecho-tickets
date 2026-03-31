@@ -159,6 +159,17 @@
         .vote-btn.voted {
             ring: 4px solid #F4C430;
         }
+
+        /* Instagram embed responsive wrapper */
+        .ig-wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .ig-wrapper iframe {
+            border-radius: 12px;
+            width: 100%;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -225,7 +236,6 @@
             state.selectedTicket = id;
             state.quantity = 1;
             render();
-            // Auto-scroll to checkout after render
             setTimeout(() => {
                 document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' });
             }, 100);
@@ -309,7 +319,7 @@
  
                     <div class="section-divider"></div>
  
-                    <!-- Tickets (MAIN CTA!) -->
+                    <!-- Tickets -->
                     <section id="tickets" class="purple-bg py-16 md:py-24">
                         <div class="max-w-7xl mx-auto px-4">
                             <h2 class="big-text-cream text-4xl md:text-5xl text-center mb-4">ELIGE TU ENTRADA</h2>
@@ -359,7 +369,7 @@
  
                     <div class="section-divider"></div>
  
-                    <!-- About (BELOW TICKETS) -->
+                    <!-- About -->
                     <section id="about" class="orange-bg py-16 md:py-24">
                         <div class="max-w-4xl mx-auto px-4">
                             <h2 class="big-text-cream text-4xl md:text-5xl text-center mb-12">¿QUÉ ES SALA DE DESPECHO?</h2>
@@ -404,17 +414,19 @@
                             <h2 class="big-text-cream text-4xl md:text-5xl text-center mb-4">EVENTOS ANTERIORES</h2>
                             <p class="cream text-center text-base md:text-lg font-semibold mb-12">Mira lo que pasó en nuestras noches</p>
  
-                            <div class="grid md:grid-cols-2 gap-8 justify-items-center">
-                                <div style="width: 100%; max-width: 400px;">
-                                    <iframe src="https://www.instagram.com/p/DVa7WgtDEpf/embed" width="100%" height="500" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px;"></iframe>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                                <div class="ig-wrapper">
+                                    <iframe src="https://www.instagram.com/p/DVa7WgtDEpf/embed" width="100%" height="420" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px; max-height: 60vh;"></iframe>
                                 </div>
  
-                                <div class="poster-card flex items-center justify-center text-center h-96">
-                                    <div class="space-y-4">
+                                <div class="poster-card flex items-center justify-center text-center" style="min-height: 280px;">
+                                    <div class="space-y-4 w-full overflow-hidden">
                                         <div class="text-6xl">📸</div>
                                         <p class="font-bold text-gray-700">Más eventos en</p>
-                                        <p class="text-4xl font-black" style="color: #2D1B4E;">@saladespecholondon</p>
-                                        <p class="text-sm text-gray-600">644 seguidores • Síguenos</p>
+                                        <a href="https://www.instagram.com/saladespecholondon/" target="_blank" class="block">
+                                            <p class="text-2xl md:text-3xl font-black break-words" style="color: #2D1B4E; word-break: break-word;">@saladespecholondon</p>
+                                        </a>
+                                        <p class="text-sm text-gray-600">3,870 seguidores • Síguenos</p>
                                     </div>
                                 </div>
                             </div>
@@ -557,7 +569,7 @@
                     </section>
  
                     ${state.showCheckout ? `
-                        <div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-center; z-index: 50;">
+                        <div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 50;">
                             <div class="poster-card mx-4 max-w-md">
                                 <h3 class="text-3xl font-black mb-4">Checkout</h3>
                                 <p class="text-gray-700 font-semibold mb-6">
